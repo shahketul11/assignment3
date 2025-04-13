@@ -4,18 +4,18 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <your_ecr_url>)
+      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 484907526019.dkr.ecr.us-east-1.amazonaws.com)
   build:
     commands:
       - echo Build started on `date`
       - docker build -t wildrydes-app .
-      - docker tag wildrydes-app:latest <your_ecr_url>:latest
+      - docker tag wildrydes-app:latest 484907526019.dkr.ecr.us-east-1.amazonaws.com/shah-repo:latest
   post_build:
     commands:
       - echo Pushing the Docker image...
-      - docker push <your_ecr_url>:latest
+      - docker push 484907526019.dkr.ecr.us-east-1.amazonaws.com/shah-repo:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"app","imageUri":"<your_ecr_url>:latest"}]' > imagedefinitions.json
+      - printf '[{"name":"app","imageUri":"484907526019.dkr.ecr.us-east-1.amazonaws.com/shah-repo:latest"}]' > imagedefinitions.json
 
 artifacts:
   files: imagedefinitions.json
