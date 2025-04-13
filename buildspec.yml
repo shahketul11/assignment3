@@ -8,8 +8,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - docker build -t wildrydes-app .
-      - docker tag wildrydes-app:latest 484907526019.dkr.ecr.us-east-1.amazonaws.com/shah-repo:latest
+      - docker build -t shah-repo .
+      - docker tag shah-repo:latest 484907526019.dkr.ecr.us-east-1.amazonaws.com/shah-repo:latest
   post_build:
     commands:
       - echo Pushing the Docker image...
